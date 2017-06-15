@@ -1,0 +1,3 @@
+rootProject.name = 'EnzymeAndJest'
+
+include ':app'
