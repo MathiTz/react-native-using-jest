@@ -10,3 +10,13 @@ it("renders correctly", () => {
   const tree = renderer.create(<Person />).toJSON();
   expect(tree).toMatchSnapshot();
 });
+
+it("renders correctly the props", () => {
+  const personComponent = renderer
+    .create(<Person name={"Josh"} age={"30"} address={"Birmingham, AL"} />)
+    .toJSON();
+  let textNodes = personComponent.children.map(c => c.children).map(c => c[0]);
+  expect(textNodes).toContain("Josh");
+  expect(textNodes).toContain("30");
+  expect(textNodes).toContain("Birmingham, AL");
+});
